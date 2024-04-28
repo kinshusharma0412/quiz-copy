@@ -1,0 +1,9 @@
+python-dotenv==1.0.0
+requests==2.31.0
+TgCrypto==1.2.5
+urllib3==2.0.3
+apscheduler
+pymongo
+git+https://github.com/rthalley/dnspython
+git+https://github.com/kinshusharma0412/pyrogram_new
+streamlit
