@@ -93,7 +93,7 @@ async def photo_dhankad(client:Client,message:Message):
 		file=await app.download_media(message,file_name=fname+"sample.png")
 		#await app.send_message(message.chat.id, str(file))
 		
-		await app.send_photo(-1002056439885,photo=file, caption=message.photo.caption,reply_to_message_id=int(topic))
+		await app.send_photo(-1002056439885,photo=file, caption=str(message.photo.caption),reply_to_message_id=int(topic))
 
 
 @app.on_message(filters.regex("\.add") & filters.private)#& filters.incoming & filters.private)
