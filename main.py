@@ -198,9 +198,9 @@ def add_poll_to_channal(x,y,chat,title,share,app):
 		y[1].remove("")
 	try:
 		try:
-			mid=app_bot.send_poll(chat_id=x,question=y[0],options=y[1],correct_option_id=y[2],reply_to_message_id=int(topic),is_anonymous=True,explanation=y[3],type=PollType.QUIZ)#reply_markup=ReplyKeyboardRemove())
+			mid=app_bot.send_poll(chat_id=x,question=y[0],options=y[1],correct_option_id=y[2],reply_to_message_id=int(topic),open_period=5,is_anonymous=True,explanation=y[3],type=PollType.QUIZ)#reply_markup=ReplyKeyboardRemove())
 		except:
-			mid=app.send_poll(chat_id=x,question=y[0],options=y[1],correct_option_id=y[2],reply_to_message_id=int(topic),is_anonymous=True,explanation=y[3],type=PollType.QUIZ)#reply_markup=ReplyKeyboardRemove())
+			mid=app.send_poll(chat_id=x,question=y[0],options=y[1],correct_option_id=y[2],open_period=5,reply_to_message_id=int(topic),is_anonymous=True,explanation=y[3],type=PollType.QUIZ)#reply_markup=ReplyKeyboardRemove())
 	except:
 		app.send_message(x, str(y)[:3500],reply_to_message_id=int(topic))
 	if chat in skip_group:
@@ -230,10 +230,6 @@ def add_poll_to_channal(x,y,chat,title,share,app):
 		except:
 			pass
 	next-=10
-	try:
-		app_bot.stop_poll(x,mid.id)
-	except:
-		app.stop_poll(x,mid.id)
 Tt={}
 @app_bot.on_message(filters.regex("^force stop$")  & ~ filters.scheduled & filters.user([1604633736,6345786041,5818561062]) & filters.private )#& filters.incoming)
 async def job2_partener1212(client:Client,message:Message):
