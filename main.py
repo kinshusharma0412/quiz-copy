@@ -95,7 +95,6 @@ async def photo_dhankad(client:Client,message:Message):
 		
 		await app.send_photo(-1002056439885,photo=file, caption=str(message.photo.caption),reply_to_message_id=int(topic))
 
-
 @app.on_message(filters.regex("\.add") & filters.private)#& filters.incoming & filters.private)
 async def job2_parteggnegr(client:Client,message:Message):
 	global list_sub
