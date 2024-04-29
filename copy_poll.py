@@ -111,7 +111,7 @@ async def start_command(client:Client,message:Message):
 			next=10
 		next2=next
 		try:
-		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-2 ) ))
+		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
 		    #random.randint(0, len(message.poll.options)-1 )
 		except Exception as e:
 		    mess=await polls_extractor.get_messages(message.chat.id,message.id)
@@ -139,7 +139,7 @@ async def start_command(client:Client,message:Message):
 			next=10
 		next2=next
 		try:
-		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-2 ) ))
+		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
 		    #random.randint(0, len(message.poll.options)-1 )
 		except Exception as e:
 		    mess=await polls_extractor.get_messages(message.chat.id,message.id)
