@@ -120,7 +120,7 @@ result_id=chose.results[0].id)
 next=0			
 
 #@app.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002120636417,-1001517843177,-1001195561278,-1001132844071,-1001908795252,-1002110566805,-1002056439885]))
-@polls_extractor.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002056439885,-1002126263044,-1002110566805,-1001517843177]))
+#@polls_extractor.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002056439885,-1002126263044,-1002110566805,-1001517843177]))
 async def start_command(client:Client,message:Message):
 	chatid=[-1002056439885]
 	global next
@@ -253,7 +253,7 @@ async def job2_partener12(client:Client,message:Message):
 		await app_bot.send_message(message.chat.id, "👎")	
 		
 
-@app_bot.on_message(filters.regex("^(https://t.me/|Me/).*?/\d{1,}/\d{1,}$") & ~ filters.scheduled  & filters.user([1604633736,6345786041,5818561062]) & filters.private)#& filters.incoming)
+#@app_bot.on_message(filters.regex("^(https://t.me/|Me/).*?/\d{1,}/\d{1,}$") & ~ filters.scheduled  & filters.user([1604633736,6345786041,5818561062]) & filters.private)#& filters.incoming)
 async def job2_partener2(client:Client,message:Message):
 	
         try:
@@ -380,10 +380,7 @@ async def job2_partener2(client:Client,message:Message):
 	            	pass#await app_bot.send_message(message.chat.id, str(e))
 def main():
 	
-	@st.cache_resource
-	def init_connection2():
-		return polls_extractor.start()
-	_=init_connection2()
+	
 	polls_extractor.send_message("kinbin246","poll extract on")
 	@st.cache_resource
 	def init_connection2():
