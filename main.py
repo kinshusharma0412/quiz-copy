@@ -59,9 +59,11 @@ app = Client("Guru",
 session_string=os.environ.get('app_session_string',""),
 api_id=os.environ.get('api_id',""),
 api_hash=os.environ.get('api_hash',""))
+
 app_bot=Client(id_generator(),
 bot_token=os.environ.get('bot_token',""),api_id=os.environ.get('api_id',""),
 api_hash=os.environ.get('api_hash',""))
+
 polls_extractor = Client("polls_extractor",
 session_string=os.environ.get('polls_extractor',""),
 api_id=os.environ.get('api_id',""),
@@ -130,10 +132,10 @@ async def start_command(client:Client,message:Message):
 			next=10
 		next2=next
 		try:
-		    mess=(await client.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
+		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
 		    #random.randint(0, len(message.poll.options)-1 )
 		except Exception as e:
-		    mess=await client.get_messages(message.chat.id,message.id)
+		    mess=await polls_extractor.get_messages(message.chat.id,message.id)
 		    mess=message.poll
 			
 		question=mess.question
@@ -151,17 +153,17 @@ async def start_command(client:Client,message:Message):
 			explanation=reaaa.sub("(^\s{1,}|^\n{1,}|\s{1,}$|\n{1,}$)","",explanation)
 		xy=[question,options,correct_option_id,explanation,str(f)]
 		for x in chatid:
-			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,True,client) ,id="job2"+id_generator()+id_generator()))[:3000])
+			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,True,polls_extractor) ,id="job2"+id_generator()+id_generator()))[:3000])
 	elif not message.from_user.is_bot:
 		next+=10
 		if next>300:
 			next=10
 		next2=next
 		try:
-		    mess=(await client.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
+		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
 		    #random.randint(0, len(message.poll.options)-1 )
 		except Exception as e:
-		    mess=await client.get_messages(message.chat.id,message.id)
+		    mess=await polls_extractor.get_messages(message.chat.id,message.id)
 		    mess=message.poll
 			
 		question=mess.question
@@ -179,7 +181,7 @@ async def start_command(client:Client,message:Message):
 			explanation=reaaa.sub("(^\s{1,}|^\n{1,}|\s{1,}$|\n{1,}$)","",explanation)
 		xy=[question,options,correct_option_id,explanation,str(f)]
 		for x in chatid:
-			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,False,client) ,id="job2"+id_generator()+id_generator()))[:3000])
+			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,False,polls_extractor) ,id="job2"+id_generator()+id_generator()))[:3000])
 
 def add_poll_to_channal(x,y,chat,title,share,app):
 	global next
