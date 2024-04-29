@@ -121,7 +121,7 @@ result_id=chose.results[0].id)
 next=0			
 
 #@app.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002120636417,-1001517843177,-1001195561278,-1001132844071,-1001908795252,-1002110566805,-1002056439885]))
-@polls_extractor.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002120636417,-1001517843177,-1001195561278,-1001132844071,-1001908795252,-1002110566805,-1002056439885,-1002126263044,-1002056439885,-1002110566805]) )
+@polls_extractor.on_message(filters.poll & filters.incoming)
 async def start_command(client:Client,message:Message):
 	chatid=[-1002056439885]
 	global next
