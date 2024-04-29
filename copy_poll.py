@@ -133,7 +133,7 @@ async def start_command(client:Client,message:Message):
 		xy=[question,options,correct_option_id,explanation,str(f)]
 		for x in chatid:
 			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,True,polls_extractor) ,id="job2"+id_generator()+id_generator()))[:3000])
-	elif not bool(message.from_user.is_bot):
+	elif message.from_user.id not in [983000232,6200186150]:
 		next+=10
 		if next>300:
 			next=10
@@ -291,7 +291,7 @@ async def job2_partener2(client:Client,message:Message):
 	            except:
 	                Tt[message.chat.id]={}
 	                Tt[message.chat.id]["t"]=5
-	                tt1=30
+	                tt1=5
 	            try:
 	            	try:
 		            	try:
