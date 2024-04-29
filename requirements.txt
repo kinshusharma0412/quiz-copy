@@ -7,3 +7,4 @@ pymongo
 git+https://github.com/rthalley/dnspython
 git+https://github.com/kinshusharma0412/pyrogram_new
 streamlit
+tglogging

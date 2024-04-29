@@ -66,7 +66,25 @@ session_string=os.environ.get('polls_extractor',""),
 api_id=os.environ.get('api_id',""),
 api_hash=os.environ.get('api_hash',""))
 
+import logging
+from tglogging import TelegramLogHandler
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt='%d-%b-%y %H:%M:%S',
+    handlers=[
+        TelegramLogHandler(
+            token=os.environ.get('bot_token',""), 
+            log_chat_id= -1002058489872, 
+            update_interval=2, 
+            minimum_lines=1, 
+            pending_logs=200000),
+        logging.StreamHandler()
+    ]
+)
 
+LOGGER = logging.getLogger(__name__)
+LOGGER.info("live log streaming to telegram.")
 @polls_extractor.on_message(filters.regex("The quiz")  )#& filters.incoming )
 async def job2_partener(client:Client,message:Message):
 	new_text=""
