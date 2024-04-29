@@ -381,7 +381,7 @@ async def job2_partener2(client:Client,message:Message):
 def main():
 	
 	
-	polls_extractor.send_message("kinbin246","poll extract on")
+	
 	@st.cache_resource
 	def init_connection2():
 		return app.start()
