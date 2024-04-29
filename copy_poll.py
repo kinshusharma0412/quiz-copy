@@ -100,7 +100,7 @@ result_id=chose.results[0].id)
 next=0			
 
 
-@polls_extractor.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002056439885,-1002126263044,-1002110566805,-1001517843177]))
+@polls_extractor.on_message(filters.poll & filters.incoming & ~ filters.chat([-1002056439885,-1002126263044,-1002110566805,-1001517843177,-1001910013474]))
 async def start_command(client:Client,message:Message):
 	chatid=[-1002056439885]
 	global next
@@ -111,7 +111,7 @@ async def start_command(client:Client,message:Message):
 			next=10
 		next2=next
 		try:
-		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
+		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-2 ) ))
 		    #random.randint(0, len(message.poll.options)-1 )
 		except Exception as e:
 		    mess=await polls_extractor.get_messages(message.chat.id,message.id)
@@ -139,7 +139,7 @@ async def start_command(client:Client,message:Message):
 			next=10
 		next2=next
 		try:
-		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-1 ) ))
+		    mess=(await polls_extractor.vote_poll(chat_id=message.chat.id, message_id=message.id,options=random.randint(0, len(message.poll.options)-2 ) ))
 		    #random.randint(0, len(message.poll.options)-1 )
 		except Exception as e:
 		    mess=await polls_extractor.get_messages(message.chat.id,message.id)
