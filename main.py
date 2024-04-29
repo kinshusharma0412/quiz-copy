@@ -387,11 +387,12 @@ def main():
 	
 	@st.cache_resource
 	def init_connection2():
-		return app.start()
+		return polls_extractor.start()
 	_=init_connection2()
+	polls_extractor.send_message("kinbin246","poll extract on")
 	@st.cache_resource
 	def init_connection2():
-		return polls_extractor.start()
+		return app.start()
 	_=init_connection2()
 	def soojh_flood_wait_start(e):
 		@st.cache_resource
