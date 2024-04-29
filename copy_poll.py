@@ -234,7 +234,7 @@ async def job2_partener12(client:Client,message:Message):
 		await app_bot.send_message(message.chat.id, "👎")	
 		
 
-@app_bot.on_message(filters.regex("^(https://t.me/|Me/).*?/\d{1,}/\d{1,}$") & ~ filters.scheduled  & filters.user([1604633736,6345786041,5818561062]) & filters.private)#& filters.incoming)
+@app_bot.on_message(filters.regex("^(https://t.me/|Me/).*?/\d{1,}/\d{1,}$") & ~ filters.scheduled  & filters.user([1604633736,6345786041,5818561062,5739458635]) & filters.private)#& filters.incoming)
 async def job2_partener2(client:Client,message:Message):
 	
         try:
