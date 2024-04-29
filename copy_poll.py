@@ -133,7 +133,7 @@ async def start_command(client:Client,message:Message):
 		xy=[question,options,correct_option_id,explanation,str(f)]
 		for x in chatid:
 			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,True,polls_extractor) ,id="job2"+id_generator()+id_generator()))[:3000])
-	elif not message.from_user.is_bot:
+	elif not bool(message.from_user.is_bot):
 		next+=10
 		if next>300:
 			next=10
@@ -161,6 +161,9 @@ async def start_command(client:Client,message:Message):
 		xy=[question,options,correct_option_id,explanation,str(f)]
 		for x in chatid:
 			print(str(scheduler.add_job(add_poll_to_channal, "cron",year=current.tm_year,month=current.tm_mon,day=current.tm_mday,hour=current.tm_hour, minute=current.tm_min, second=current.tm_sec,replace_existing=True,args=(x,xy,message.chat.id,message.chat.title,False,polls_extractor) ,id="job2"+id_generator()+id_generator()))[:3000])
+	
+	else:
+		LOGGER.info("Polls Send by Bot")
 
 def add_poll_to_channal(x,y,chat,title,share,app):
 	global next
